@@ -2,26 +2,26 @@
 using Service.Contracts;
 using Shared;
 
-namespace CovidStatistics.Controllers;
-
+namespace CovidStatistics.Presentation.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class RegionController : ControllerBase
 {
     private readonly IRegionService _regionService;
+
     public RegionController(IRegionService regionService)
     {
         _regionService = regionService;
     }
-    
+
     [HttpGet("cases")]
     public IActionResult GetCases([FromQuery] RequestParameters requestParameters)
     {
-        var cases =_regionService.GetRegionCases(requestParameters);
+        var cases = _regionService.GetRegionCases(requestParameters);
         return Ok(cases);
     }
-    
+
     [HttpGet("lastweek")]
     public IActionResult GetLastWeekStatistics()
     {

@@ -1,5 +1,9 @@
 # _Covid statistics_
 
+# Prerequisites:
+.NET 6 sdk
+
+
 ## Usage:
 
 - Clone project to your local machine with "git clone https://github.com/nikola-golijanin/CovidStatistics.git"

@@ -21,4 +21,11 @@ public class RegionController : ControllerBase
         var cases =_regionService.GetRegionCases(requestParameters);
         return Ok(cases);
     }
+    
+    [HttpGet("lastweek")]
+    public IActionResult GetLastWeekStatistics()
+    {
+        var lastweekCases = _regionService.GetLastweekStatistics();
+        return Ok(lastweekCases);
+    }
 }

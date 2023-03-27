@@ -5,5 +5,5 @@ namespace Service.Contracts;
 
 public interface IFileReaderService
 {
-    IEnumerable<Case> ReadCasesFromFileBasedOnRegion(Region region);
+    IEnumerable<Case> ReadCasesFromFileBasedOnRegion(string region);
 }

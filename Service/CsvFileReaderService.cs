@@ -18,7 +18,7 @@ public class CsvFileReaderService : IFileReaderService
         _filePath = _configuration.GetSection("FilePath").Value;
 
     }
-    public IEnumerable<Case> ReadCasesFromFileBasedOnRegion(Region region)
+    public IEnumerable<Case> ReadCasesFromFileBasedOnRegion(string region)
     {
         using (var reader = new StreamReader(_filePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -35,44 +35,44 @@ public class CsvFileReaderService : IFileReaderService
         }
     }
     
-    private void ConfigureCsvReaderBasedOnRegion(Region region, CsvReader csv)
+    private void ConfigureCsvReaderBasedOnRegion(string region, CsvReader csv)
     {
         switch (region)
         {
-            case Region.LJ:
+            case "LJ":
                 csv.Context.RegisterClassMap<LjCaseMap>();
                 break;
-            case Region.CE:
+            case "CE":
                 csv.Context.RegisterClassMap<CeCaseMap>();
                 break;
-            case Region.KR:
+            case "KR":
                 csv.Context.RegisterClassMap<KrCaseMap>();
                 break;
-            case Region.NM:
+            case "NM":
                 csv.Context.RegisterClassMap<NmCaseMap>();
                 break;
-            case Region.KK:
+            case "KK":
                 csv.Context.RegisterClassMap<KkCaseMap>();
                 break;
-            case Region.KP:
+            case "KP":
                 csv.Context.RegisterClassMap<KpCaseMap>();
                 break;
-            case Region.MB:
+            case "MB":
                 csv.Context.RegisterClassMap<MbCaseMap>();
                 break;
-            case Region.MS:
+            case "MS":
                 csv.Context.RegisterClassMap<MsCaseMap>();
                 break;
-            case Region.NG:
+            case "NG":
                 csv.Context.RegisterClassMap<NgCaseMap>();
                 break;
-            case Region.PO:
+            case "PO":
                 csv.Context.RegisterClassMap<PoCaseMap>();
                 break;
-            case Region.SG:
+            case "SG":
                 csv.Context.RegisterClassMap<SgCaseMap>();
                 break;
-            case Region.ZA:
+            case "ZA":
                 csv.Context.RegisterClassMap<ZaCaseMap>();
                 break;
             default:

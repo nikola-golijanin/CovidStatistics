@@ -4,6 +4,7 @@ public class Case
 {
     public DateTime Date { get; set; }
     
+    public string Region { get; set; }
     public int? NumberOfActiveCases { get; set; }
     
     public int? NumberOfVacinatedFirst { get; set; }

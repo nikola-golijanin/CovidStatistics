@@ -4,7 +4,7 @@ using Shared;
 
 namespace CovidStatistics.Presentation.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/region")]
 [ApiController]
 public class RegionController : ControllerBase
 {

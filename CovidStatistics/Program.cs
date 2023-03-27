@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.ConfigureServices();
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(CovidStatistics.Presentation.AssemblyReference).Assembly)
     .AddJsonOptions(options =>

@@ -6,6 +6,6 @@ namespace Service.Contracts;
 
 public interface IRegionService
 {
-    IEnumerable<Case> GetRegionCases(RequestParameters requestParameters);
+    IEnumerable<CaseDto> GetRegionCases(RequestParameters requestParameters);
     IEnumerable<LastWeekStatisticsDto> GetLastweekStatistics();
 }

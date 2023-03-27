@@ -1,4 +1,5 @@
-﻿using Entities.Enums;
+﻿using AutoMapper;
+using Entities.Enums;
 using Entities.Models;
 using Service.Contracts;
 using Shared;
@@ -9,18 +10,26 @@ namespace Service;
 public class RegionService : IRegionService
 {
     private readonly IFileReaderService _fileReaderService;
+    private readonly IMapper _mapper;
 
-    public RegionService(IFileReaderService fileReaderService)
+    public RegionService(IFileReaderService fileReaderService,IMapper mapper)
     {
         _fileReaderService = fileReaderService;
+        _mapper = mapper;
     }
 
-    public IEnumerable<Case> GetRegionCases(RequestParameters requestParameters)
+    public IEnumerable<CaseDto> GetRegionCases(RequestParameters requestParameters)
     {
-        var allCasesForRegion = _fileReaderService.ReadCasesFromFileBasedOnRegion(requestParameters.Region.ToString());
-        return allCasesForRegion
-            .Where(c => c.Date > requestParameters.FromDate && c.Date < requestParameters.ToDate)
-            .ToList();
+        var allCasesForRegion =
+            _fileReaderService
+                .ReadCasesFromFileBasedOnRegion(requestParameters.Region.ToString());
+        
+        var filteredCases = allCasesForRegion
+                .Where(c => c.Date > requestParameters.FromDate && c.Date < requestParameters.ToDate)
+                .ToList();
+
+        var casesDto = _mapper.Map<IEnumerable<CaseDto>>(filteredCases);
+        return casesDto;
     }
 
     public IEnumerable<LastWeekStatisticsDto> GetLastweekStatistics()

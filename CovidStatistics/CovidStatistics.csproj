@@ -16,8 +16,4 @@
       <ProjectReference Include="..\Service\Service.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Content Include=".github\workflows\test.yml" />
-    </ItemGroup>
-
 </Project>

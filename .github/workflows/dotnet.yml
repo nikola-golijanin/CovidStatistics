@@ -21,12 +21,12 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -o myapp
+      run: dotnet publish -o myapp/app
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: artifact-files
-        path: myapp/
+        path: myapp/app
     - name: Get build artifacts
       uses: actions/download-artifact@v3
       with:

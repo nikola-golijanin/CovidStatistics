@@ -17,10 +17,6 @@ jobs:
         with:
           name: dotnet_artifact
           path: artifact
-      - name: Get build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: dotnet_artifact
   deploy:
      needs: build
      runs-on: ubuntu-latest

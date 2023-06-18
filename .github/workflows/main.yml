@@ -1,15 +1,7 @@
 name: Deploy project
 on: workflow_dispatch
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: dotnet restore
   build:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -19,4 +11,9 @@ jobs:
       - name: Build project
         run: dotnet build
       - name: Deploy
-        run: echo "Deploying..."
+        run: dotnet publish
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dotnet_artifact
+          path: ./CovidStatistics/bin/Debug/net6.0/publish

@@ -20,4 +20,15 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish -o myapp
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifact-files
+        path: myapp
+    - name: Get build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: artifact-files
       

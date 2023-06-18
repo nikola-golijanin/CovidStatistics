@@ -16,4 +16,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dotnet_artifact
-          path: ./CovidStatistics/bin/Debug/net6.0/publish
+          path: artifact
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dotnet_artifact
